@@ -8,7 +8,6 @@ import javax.persistence.Persistence;
 import javax.persistence.Query;
 
 import entities.AbstractEntity;
-import entities.Movimento;
 
 public abstract class AbstractDAO<T extends AbstractEntity> {
 	
