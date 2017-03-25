@@ -1,33 +1,52 @@
-package teste;
+package test;
 
-import java.util.ArrayList;
 import java.util.Date;
 
-import services.ContaService;
-import entities.Corrente;
-import entities.Movimento;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+
+import entities.Conta;
 
 public class Teste {
-
 	public static void main(String[] args) {
-		Corrente corrente = new Corrente();
-		corrente.setTaxaManutencao(10.0);
-		corrente.setDataAbertura(new Date());
-		corrente.setNome("Ribas");
+		EntityManagerFactory fac = Persistence.createEntityManagerFactory("conta_pu");
 		
-		Movimento movimento = new Movimento();
-		movimento.setDataHora(new Date());
-		movimento.setSaldo(100.0);
+		EntityManager manager = fac.createEntityManager();
 		
-		movimento.setConta(corrente);
+		Conta conta = new Conta();
 		
-		corrente.setMovimentos(new ArrayList<Movimento>());
-		corrente.getMovimentos().add(movimento);
+		conta.setCreditoBloqueado(false);
+		
+		conta.setDataAbertura(new Date());
+		
+		conta.setNome("Corrente Especial");
+		
+		manager.getTransaction().begin();
+		
+		manager.persist(conta);
+		
+		manager.getTransaction().commit();
+		
+		manager.close();
+		
+		
+		manager = fac.createEntityManager();
+		
+		manager.getTransaction().begin();
+		
+		conta = new Conta();
+		
+		conta.setId(10L);
+		
+		manager.merge(conta);
+		
+		manager.getTransaction().commit();
 		
 		
 		
-		ContaService.abreConta(corrente);
 		
 	}
+	
 
 }
