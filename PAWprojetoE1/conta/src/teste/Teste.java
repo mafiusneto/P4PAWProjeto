@@ -6,8 +6,11 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+import daos.UsuarioDAO;
 import entities.Aluno;
 import entities.Endereco;
+import entities.Usuario;
+import services.UsuarioService;
 
 public class Teste {
 	public static void main(String[] args) {
@@ -15,12 +18,22 @@ public class Teste {
 		
 		EntityManager manager = fac.createEntityManager();
 		
+		UsuarioService userD = new UsuarioService();
+		Usuario user = userD.Logar("Teste", "123456");
+		if (user != null ){
+			System.out.println("Senha Achou: "+user.getNome());
+		}else{
+			System.out.println("Não achou!");
+		}
+		
+		/* Inserindo
 		Aluno aluno = new Aluno();
-		aluno.setLogin("alunoteste");
+		aluno.setLogin("Teste");
 		aluno.setSenha("123456");
 		aluno.setNome("Fulaninho da Silva");
 		aluno.setMatricula(1510008636);
 		aluno.setDataVinculo(new Date());
+		//aluno.setId(5L);
 		
 		Endereco ende = new Endereco();
 		ende.setBairro("asdasd");
@@ -32,10 +45,13 @@ public class Teste {
 		ende.setRua("rau do Ze Chulipa");
 		
 		aluno.setEndereco(ende);
-		//aluno.setEndereco(endereco);
+				
+
+		
 		
 		try {
 			manager.getTransaction().begin();
+			manager.persist(ende);
 			manager.persist(aluno);
 			
 			manager.getTransaction().commit();
@@ -43,6 +59,12 @@ public class Teste {
 		} catch (Exception e) {
 			manager.getTransaction().rollback();
 		}
+		*/
+		
+		/*Busca dados* /
+		
+		Aluno aluno = manager.find(Aluno.class, 9L);
+		System.out.println("Achou: "+aluno.getNome());
 		manager.close();
 		
 		/*

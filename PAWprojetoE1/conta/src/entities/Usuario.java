@@ -1,5 +1,6 @@
 package entities;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -23,7 +24,7 @@ public class Usuario extends AbstractEntity {
 	private String nome;
 	private int matricula;	
 	
-	@OneToOne
+	@OneToOne(cascade=CascadeType.PERSIST)
 	private Endereco endereco;
 	
 	@Override
