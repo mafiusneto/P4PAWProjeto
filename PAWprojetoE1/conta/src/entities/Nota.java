@@ -1,14 +1,17 @@
 package entities;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.SequenceGenerator;
 
 @Entity
 @Inheritance(strategy=InheritanceType.JOINED)
-public class Nota {
-	
-	
+@SequenceGenerator(name="nota",sequenceName="nota_seq", allocationSize=1)
+public class Nota extends AbstractEntity{
+	@Id
+	private Long id;
 
 	private String unidade;
 	private Double nota;
@@ -36,5 +39,16 @@ public class Nota {
 	
 	public void setPeso(Double peso) {
 		this.peso = peso;
+	}
+
+	@Override
+	public Long getId() {
+		return id;
+	}
+
+	@Override
+	public void setId(Long id) {
+		this.id = id;
+		
 	}
 }

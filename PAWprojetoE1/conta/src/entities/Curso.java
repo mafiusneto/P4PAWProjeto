@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 
@@ -26,6 +27,9 @@ public class Curso extends AbstractEntity {
 	
 	@OneToMany(mappedBy="curso", fetch=FetchType.EAGER, cascade={CascadeType.PERSIST,CascadeType.REMOVE})
 	private List<Aluno> alunos;
+	
+	@ManyToMany
+	private List<Professor> professores;
 
 	@Override
 	public Long getId() {
@@ -51,6 +55,22 @@ public class Curso extends AbstractEntity {
 
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
+	}
+
+	public List<Aluno> getAlunos() {
+		return alunos;
+	}
+
+	public void setAlunos(List<Aluno> alunos) {
+		this.alunos = alunos;
+	}
+
+	public List<Professor> getProfessores() {
+		return professores;
+	}
+
+	public void setProfessores(List<Professor> professores) {
+		this.professores = professores;
 	}
 	
 	
