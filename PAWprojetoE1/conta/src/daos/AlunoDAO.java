@@ -1,32 +1,31 @@
 package daos;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
-import entities.Usuario;
+import entities.Aluno;
 
-public class UsuarioDAO extends AbstractDAO<Usuario>{
+public class AlunoDAO extends AbstractDAO<Aluno>{
 	
-	public UsuarioDAO(EntityManager entity){
+	public AlunoDAO(EntityManager entity){
 		super(entity);
 	}
 
 	@Override
-	public Class<Usuario> entityClass() {
-		return Usuario.class;
+	public Class<Aluno> entityClass() {
+		return Aluno.class;
 	}
 
 	
-	public Usuario getUsuario(String login, String senha){
+	public Aluno getUsuario(String login, String senha){
 		Query query =  manager.createQuery("select u from "+ entityClass().getSimpleName()+" u " +
 				"where u.login = :login and u.senha = :senha");
 		query.setParameter("login", login);
 		query.setParameter("senha", senha);
 		
-		ArrayList<Usuario> lista = new ArrayList<Usuario>(query.getResultList());
+		ArrayList<Aluno> lista = new ArrayList<Aluno>(query.getResultList());
 		
 		if (lista.size() > 0){
 			return  lista.get(0);

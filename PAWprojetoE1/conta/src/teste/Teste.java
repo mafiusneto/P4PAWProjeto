@@ -1,5 +1,6 @@
 package teste;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 import javax.persistence.EntityManager;
@@ -9,6 +10,7 @@ import javax.persistence.Persistence;
 import daos.UsuarioDAO;
 import entities.Aluno;
 import entities.Endereco;
+import entities.Professor;
 import entities.Usuario;
 import services.UsuarioService;
 
@@ -26,6 +28,63 @@ public class Teste {
 			System.out.println("Não achou!");
 		}
 		
+		user = null;
+		user = userD.BuscarPorId(9L);
+		if (user != null ){
+			System.out.println("Id Achou: "+user.getNome());
+		}else{
+			System.out.println("Não achou!");
+		}
+		
+		/*
+		Professor prof = new Professor();
+		prof.setLogin("Teste outro");
+		prof.setSenha("123456");
+		prof.setNome("Fulaninho da Silva");
+		prof.setMatricula(1510008636);
+		prof.setTitulacao("Metre");
+		prof.setAreaAtuacao("POPOP");
+
+		Endereco ende = new Endereco();
+		ende.setBairro("asdasd");
+		ende.setCep("58123456");
+		ende.setCidade("Jampa");
+		ende.setComplemento("AP 203");
+		ende.setEstado("PB");
+		ende.setNumero("250");
+		ende.setRua("rau do Ze Chulipa");
+		
+		prof.setEndereco(ende);
+		userD.InserirUsuario(prof);
+		
+		
+		
+		//ArrayList<Professor> lProf = new ArrayList<Professor>(userD.listar());
+		
+		
+		
+		
+		
+		/* Teste inserindo usuario
+		Aluno aluno = new Aluno();
+		aluno.setLogin("Teste outro");
+		aluno.setSenha("123456");
+		aluno.setNome("Fulaninho da Silva");
+		aluno.setMatricula(1510008636);
+		aluno.setDataVinculo(new Date());
+
+		Endereco ende = new Endereco();
+		ende.setBairro("asdasd");
+		ende.setCep("58123456");
+		ende.setCidade("Jampa");
+		ende.setComplemento("AP 203");
+		ende.setEstado("PB");
+		ende.setNumero("250");
+		ende.setRua("rau do Ze Chulipa");
+		
+		aluno.setEndereco(ende);
+		
+		userD.InserirUsuario(aluno);
 		/* Inserindo
 		Aluno aluno = new Aluno();
 		aluno.setLogin("Teste");

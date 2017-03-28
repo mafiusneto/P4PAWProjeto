@@ -1,0 +1,69 @@
+package Service;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+
+import daos.UsuarioDAO;
+import entities.Usuario;
+
+public class UsuarioService {
+	
+	static EntityManagerFactory fac = Persistence.createEntityManagerFactory("academico_pu");
+	static EntityManager manager = fac.createEntityManager();
+	
+	public static void InserirUsuario(Usuario usuario){
+		try {
+			manager.getTransaction().begin();
+			UsuarioDAO dao = new UsuarioDAO(manager);
+			dao.inserir(usuario);
+			manager.getTransaction().commit();
+		} catch (Exception e) {
+			manager.getTransaction().rollback();
+			e.printStackTrace();
+		}finally {
+			manager.close();
+		}
+	}
+	public static void ExcluirUsuario(Usuario usuario){
+		try {
+			manager.getTransaction().begin();
+			UsuarioDAO dao  = new UsuarioDAO(manager);
+			dao.excluir(usuario);
+			manager.getTransaction().commit();
+		} catch (Exception e) {
+			manager.getTransaction().rollback();
+			e.printStackTrace();
+		}finally {
+			manager.close();
+		}
+	}
+	public static void AtualizarUsuario(Usuario usuario){
+		try {
+			manager.getTransaction().begin();
+			UsuarioDAO dao = new UsuarioDAO(manager);
+			dao.atualizar(usuario);
+			manager.getTransaction().commit();
+		} catch (Exception e) {
+			manager.getTransaction().rollback();
+			e.printStackTrace();
+		}finally {
+			manager.close();
+		}
+	}
+	public static void BuscarPorId(Usuario usuario){
+		try {
+			manager.getTransaction().begin();
+			UsuarioDAO dao = new UsuarioDAO(manager);
+			dao.buscarPorId(usuario);
+			manager.getTransaction().commit();
+		} catch (Exception e) {
+			manager.getTransaction().rollback();
+			e.printStackTrace();
+		}finally {
+			manager.close();
+		}
+		
+	}
+
+}
