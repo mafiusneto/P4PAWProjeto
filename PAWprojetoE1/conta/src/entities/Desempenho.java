@@ -44,4 +44,32 @@ public class Desempenho extends AbstractEntity{
 		this.id = id;
 		
 	}
+
+	public Turma getTurma() {
+		return turma;
+	}
+
+	public void setTurma(Turma turma) {
+		this.turma = turma;
+	}
+
+	public Aluno getAluno() {
+		return aluno;
+	}
+
+	public void setAluno(Aluno aluno) {
+		this.aluno = aluno;
+	}
+
+	public List<Nota> getNotas() {
+		return notas;
+	}
+
+	public void setNotas(List<Nota> notas) {
+		this.notas = notas;
+	}
+	
+	public void setNota(Nota nota){
+		this.notas.add(nota);
+	}
 }

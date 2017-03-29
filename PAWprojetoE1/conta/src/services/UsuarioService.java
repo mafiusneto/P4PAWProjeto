@@ -14,12 +14,12 @@ import entities.Usuario;
 
 public class UsuarioService {
 	static EntityManagerFactory fac  = Persistence.createEntityManagerFactory("bdAcademico");
-	//static EntityManager manager = fac.createEntityManager();
+	static EntityManager manager = fac.createEntityManager();
 	
 	
 	public Usuario Logar(String login, String senha){
 
-		EntityManager manager = fac.createEntityManager();
+		//EntityManager manager = fac.createEntityManager();
 		Usuario user = null;
 		
 		
@@ -37,14 +37,14 @@ public class UsuarioService {
 			e.printStackTrace();
 		}
 		finally{
-			manager.close();
+			//manager.close();
 		}
 		
 		return user;
 	}
 	
 	public void InserirUsuario(Usuario usuario){
-		EntityManager manager = fac.createEntityManager();
+		//EntityManager manager = fac.createEntityManager();
 		try {
 			manager.getTransaction().begin();
 			UsuarioDAO dao = new UsuarioDAO(manager);
@@ -54,12 +54,12 @@ public class UsuarioService {
 			manager.getTransaction().rollback();
 			e.printStackTrace();
 		}finally {
-			manager.close();
+			//manager.close();
 		}
 	}
 	
 	public void ExcluirUsuario(Usuario usuario){
-		EntityManager manager = fac.createEntityManager();
+		//EntityManager manager = fac.createEntityManager();
 		try {
 			manager.getTransaction().begin();
 			UsuarioDAO dao  = new UsuarioDAO(manager);
@@ -69,12 +69,12 @@ public class UsuarioService {
 			manager.getTransaction().rollback();
 			e.printStackTrace();
 		}finally {
-			manager.close();
+			//manager.close();
 		}
 	}
 	
 	public void AtualizarUsuario(Usuario usuario){
-		EntityManager manager = fac.createEntityManager();
+		//EntityManager manager = fac.createEntityManager();
 		try {
 			manager.getTransaction().begin();
 			UsuarioDAO dao = new UsuarioDAO(manager);
@@ -84,31 +84,30 @@ public class UsuarioService {
 			manager.getTransaction().rollback();
 			e.printStackTrace();
 		}finally {
-			manager.close();
+			//manager.close();
 		}
 	}
 	
 	public Usuario BuscarPorId(Long id){
-		EntityManager manager = fac.createEntityManager();
+		//EntityManager manager = fac.createEntityManager();
 		Usuario usuario = null;
 		try {
 			manager.getTransaction().begin();
 			UsuarioDAO dao = new UsuarioDAO(manager);
 			usuario = dao.buscarPorId(id);
-			//dao.buscarPorId(usuario);
 			manager.getTransaction().commit();
 		} catch (Exception e) {
 			manager.getTransaction().rollback();
 			e.printStackTrace();
 		}finally {
-			manager.close();
+			//manager.close();
 		}
 		return usuario;
 	}
 
 	
 	public List<Usuario> listar(){
-		EntityManager manager = fac.createEntityManager();
+		//EntityManager manager = fac.createEntityManager();
 		List<Usuario> lista = null;
 		try {
 			manager.getTransaction().begin();
@@ -120,7 +119,7 @@ public class UsuarioService {
 			manager.getTransaction().rollback();
 			e.printStackTrace();
 		}finally {
-			manager.close();
+			//manager.close();
 		}
 		return lista;
 	}

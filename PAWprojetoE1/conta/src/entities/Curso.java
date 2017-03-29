@@ -85,6 +85,13 @@ public class Curso extends AbstractEntity {
 		this.disciplinas = disciplinas;
 	}
 	
+	public void setProfessor(Professor professor){
+		this.professores.add(professor);
+	}
+
+	public void setDisciplina(Disciplina disciplina) {
+		this.disciplinas.add(disciplina);
+	}
 	
 
 }
