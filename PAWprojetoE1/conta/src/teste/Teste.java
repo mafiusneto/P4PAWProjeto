@@ -20,7 +20,7 @@ public class Teste {
 		
 		EntityManager manager = fac.createEntityManager();
 		
-		UsuarioService userD = new UsuarioService();
+		UsuarioService userD = new UsuarioService(manager);
 		Usuario user = userD.Logar("Teste", "123456");
 		if (user != null ){
 			System.out.println("Senha Achou: "+user.getNome());
