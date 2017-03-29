@@ -10,10 +10,14 @@ import entities.Desempenho;
 import entities.Nota;
 import entities.Turma;
 
-public class DesempenhoService {
-	static EntityManagerFactory fac  = Persistence.createEntityManagerFactory("bdAcademico");
-	EntityManager manager = fac.createEntityManager();
+public class DesempenhoService  extends AbstractService{
+	//static EntityManagerFactory fac  = Persistence.createEntityManagerFactory("bdAcademico");
+	//EntityManager manager = fac.createEntityManager();
 	
+	public DesempenhoService(EntityManager manager) {
+		super(manager);
+	}
+
 	public void Cadastro(Turma turma, Aluno aluno, Nota nota){
 		//EntityManager manager = fac.createEntityManager();
 		

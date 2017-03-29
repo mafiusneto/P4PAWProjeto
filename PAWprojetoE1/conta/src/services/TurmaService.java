@@ -10,10 +10,14 @@ import entities.Disciplina;
 import entities.Professor;
 import entities.Turma;
 
-public class TurmaService {
-	static EntityManagerFactory fac  = Persistence.createEntityManagerFactory("bdAcademico");
-	EntityManager manager = fac.createEntityManager();
+public class TurmaService  extends AbstractService{
+	//static EntityManagerFactory fac  = Persistence.createEntityManagerFactory("bdAcademico");
+	//EntityManager manager = fac.createEntityManager();
 	
+	public TurmaService(EntityManager manager) {
+		super(manager);
+	}
+
 	public void Cadastro(Turma turma, Disciplina disciplina, Professor professor){
 		//EntityManager manager = fac.createEntityManager();
 		

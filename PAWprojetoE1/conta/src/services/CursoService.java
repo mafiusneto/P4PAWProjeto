@@ -11,9 +11,13 @@ import entities.Curso;
 import entities.Disciplina;
 import entities.Professor;
 
-public class CursoService {
-	static EntityManagerFactory fac  = Persistence.createEntityManagerFactory("bdAcademico");
-	EntityManager manager = fac.createEntityManager();
+public class CursoService  extends AbstractService{
+	//static EntityManagerFactory fac  = Persistence.createEntityManagerFactory("bdAcademico");
+	//EntityManager manager = fac.createEntityManager();
+
+	public CursoService(EntityManager manager) {
+		super(manager);
+	}
 
 	public void InserirCurso(Curso curso){
 		//EntityManager manager = fac.createEntityManager();

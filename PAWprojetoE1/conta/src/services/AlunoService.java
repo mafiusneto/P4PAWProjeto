@@ -8,9 +8,14 @@ import daos.AlunoDAO;
 import entities.Aluno;
 import entities.Curso;
 
-public class AlunoService {
-	static EntityManagerFactory fac  = Persistence.createEntityManagerFactory("bdAcademico");
-	EntityManager manager = fac.createEntityManager();
+public class AlunoService extends AbstractService{
+	
+	public AlunoService(EntityManager manager) {
+		super(manager);
+	}
+
+	//static EntityManagerFactory fac  = Persistence.createEntityManagerFactory("bdAcademico");
+	//EntityManager manager = fac.createEntityManager();
 	
 	public void Matricular(Curso curso, Aluno aluno){
 		//EntityManager manager = fac.createEntityManager();

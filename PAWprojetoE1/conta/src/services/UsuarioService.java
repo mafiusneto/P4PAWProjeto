@@ -12,11 +12,15 @@ import org.omg.PortableInterceptor.USER_EXCEPTION;
 import daos.UsuarioDAO;
 import entities.Usuario;
 
-public class UsuarioService {
-	static EntityManagerFactory fac  = Persistence.createEntityManagerFactory("bdAcademico");
-	static EntityManager manager = fac.createEntityManager();
+public class UsuarioService  extends AbstractService{
+	//static EntityManagerFactory fac  = Persistence.createEntityManagerFactory("bdAcademico");
+	//static EntityManager manager = fac.createEntityManager();
 	
 	
+	public UsuarioService(EntityManager manager) {
+		super(manager);
+	}
+
 	public Usuario Logar(String login, String senha){
 
 		//EntityManager manager = fac.createEntityManager();
